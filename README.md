@@ -26,6 +26,15 @@ Internet Gateway: Allows Lambda access to external APIs (e.g., Facebook API).
 ✅ Easy to extend for other JSON data source
 ```
 
+🧱 Dependencies for Lambda Package
+```
+mkdir package
+pip install -r requirements.txt -t package
+cp handler.py package/
+cd package
+zip -r ../lambda.zip .
+```
+
 
 👌 Test 
 ```
