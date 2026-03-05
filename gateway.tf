@@ -22,7 +22,6 @@ resource "aws_api_gateway_integration" "lambda" {
   http_method             = aws_api_gateway_method.method.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-
   uri = aws_lambda_function.api_lambda.invoke_arn
 }
 
@@ -31,15 +30,23 @@ resource "aws_lambda_permission" "api_gateway" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_lambda.function_name
   principal     = "apigateway.amazonaws.com"
-
   source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
 }
 
+
 resource "aws_api_gateway_deployment" "deployment" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
   depends_on = [
     aws_api_gateway_integration.lambda
   ]
-
-  rest_api_id = aws_api_gateway_rest_api.api.id
-  stage_name  = "prod"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
+
+resource "aws_api_gateway_stage" "prod" {
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  stage_name    = "prod"
+}
+
