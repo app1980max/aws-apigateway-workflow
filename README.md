@@ -27,6 +27,13 @@ Internet Gateway: Allows Lambda access to external APIs (e.g., Facebook API).
 ```
 
 
+👌 Test 
+```
+curl -X POST \
+https://API_ID.execute-api.us-east-1.amazonaws.com/prod/data \
+-d '{"data":"hello world"}'
+```
+
 
 🚀 Deployment Options
 ```
