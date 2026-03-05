@@ -1,6 +1,7 @@
-<img width="1536" height="1236" alt="image" src="https://github.com/user-attachments/assets/af2a8072-679b-4e0b-b240-2634d0375475" />
+<img width="1024" height="600" alt="image" src="https://github.com/user-attachments/assets/44de25a9-b042-4aa7-8538-e0eeef9cde40" />
 
-## Lambda ETL | AWS 
+
+## AWS | API Gateway + Lambda  
 Serverless ETL pipeline built with AWS Lambda, designed to ingest JSON data (e.g., from Facebook) and store it into a PostgreSQL database hosted in AWS RDS. The entire infrastructure is provisioned using Terraform, including VPC networking, security groups, IAM roles, and Lambda configuration.
 
 
